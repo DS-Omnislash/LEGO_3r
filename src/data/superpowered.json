@@ -1,0 +1,779 @@
+{
+  "meta": {
+    "season": "SUPERPOWERED℠ (2022-2023)",
+    "source": "Reglas-Robot-SUPERPOWERED-FLL-2023.pdf — Libro de reglas del juego del robot (ES), ref. 30082203 V1",
+    "rulesVersion": "superpowered-es-v1",
+    "matchDuration": "2 minuts i 30 segons (p. 6, p. 16, p. 21)",
+    "extractedOn": "2026-10-22",
+    "notes": [
+      "El text oficial en castellà es conserva literalment a cada condició (camp «official»). El text en català és una traducció per a la interfície.",
+      "Segons la p. 16: «Toda la redacción del Juego del robot significa precisamente y solamente lo que dice». El text té autoritat sobre les imatges.",
+      "Les actualitzacions del desafiament (Challenge Updates) publicades durant la temporada poden substituir aquest material (p. 16). No estan incloses en el PDF."
+    ]
+  },
+  "resources": {
+    "energy": { "label": "Unitats d'energia", "total": 12, "source": "p. 23 («12 unidades de energía») i p. 25 («Energía (12x)»)" },
+    "fuel": { "label": "Unitats de combustible", "total": 3, "source": "p. 23 i p. 25 («Combustible (3x)»)" },
+    "waterLoop": { "label": "Unitats d'aigua amb llaç", "total": 3, "source": "p. 25 («Agua con loop (3x)») i p. 28" }
+  },
+  "globalConstraints": [
+    {
+      "id": "energy-cap",
+      "type": "resourceMax",
+      "resource": "energy",
+      "max": 12,
+      "origin": "derived",
+      "source": "p. 23, p. 25",
+      "reason": "Només hi ha 12 unitats d'energia al terreny de joc. La suma d'unitats d'energia col·locades en destinacions (M03, M08, M09, M13, M14, M15) no pot superar 12."
+    }
+  ],
+  "missions": [
+    {
+      "id": "EI",
+      "number": "EI",
+      "kind": "general",
+      "name": "Inspecció de l'equipament",
+      "officialName": "INSPECCIÓN DE EQUIPAMIENTO",
+      "pages": [7, 18, 30],
+      "story": "Abans de la partida, l'àrbitre inspecciona l'equipament de l'equip.",
+      "storyOfficial": "Antes de la partida, el/la árbitro inspeccionará el equipamiento.",
+      "task": "Fer que el robot i tot l'equipament càpiguen en una sola àrea de llançament i sota el límit d'alçada de 305 mm.",
+      "taskOfficial": "Si un equipo es capaz de colocar todo su equipamiento en una sola área de lanzamiento y bajo el límite de altura de 305 mm obtendrá 20 puntos. (Reglas, Configuración del terreno de juego 1)",
+      "setup": "Tot l'equipament ha de cabre dins de les dues àrees de llançament i sota 305 mm (obligatori). Els 20 punts s'obtenen si cap en una sola àrea.",
+      "setupPage": 18,
+      "conditions": [
+        {
+          "id": "fits",
+          "type": "boolean",
+          "points": 20,
+          "label": "El robot i tot l'equipament caben completament en UNA àrea de llançament i no superen 305 mm durant la inspecció",
+          "official": "Si vuestro robot y todo su equipamiento caben completamente en un área de lanzamiento y no supera el límite de altura de 305 mm (12 pulgadas) durante la inspección previa a la partida: 20",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "id": "M01",
+      "number": "01",
+      "kind": "mission",
+      "name": "Model del projecte d'innovació",
+      "officialName": "MODELO DE PROYECTO DE INNOVACIÓN",
+      "pages": [8, 30],
+      "position": { "x": 0.49, "y": 0.48 },
+      "story": "Aquest model ha de representar la solució del vostre projecte d'innovació.",
+      "storyOfficial": "Este modelo debe representar la solución a vuestro proyecto de innovación.",
+      "task": "Portar el model del projecte d'innovació a l'àrea objectiu de la planta d'hidrogen.",
+      "taskOfficial": "Llevad vuestro modelo de proyecto de innovación al área objetivo de la planta de hidrógeno.",
+      "setup": "Col·loqueu el model del projecte d'innovació a qualsevol àrea de casa (si n'hi ha).",
+      "setupPage": 26,
+      "conditions": [
+        {
+          "id": "single",
+          "type": "check",
+          "default": false,
+          "label": "Verificació: és un ÚNIC model de projecte d'innovació portat a la partida",
+          "official": "Diseñad y traed un único modelo de proyecto de innovación a la partida.",
+          "page": 8
+        },
+        {
+          "id": "white",
+          "type": "check",
+          "default": false,
+          "label": "Verificació: està fet d'almenys dues peces LEGO blanques",
+          "official": "Para puntuar, debe: • Estar hecho de al menos dos piezas blancas de LEGO®.",
+          "page": 8
+        },
+        {
+          "id": "studs",
+          "type": "check",
+          "default": false,
+          "label": "Verificació: mesura almenys quatre espigues LEGO en alguna direcció",
+          "official": "Para puntuar, debe: • Medir al menos cuatro espigas LEGO en alguna dirección.",
+          "page": 8
+        },
+        {
+          "id": "inArea",
+          "type": "boolean",
+          "points": 10,
+          "label": "El model és, almenys parcialment, a l'àrea objectiu de la planta d'hidrogen",
+          "official": "Si vuestro modelo de proyecto de innovación se encuentra, al menos parcialmente, en el área objetivo de la planta de hidrógeno: 10",
+          "page": 8,
+          "requires": [
+            { "cond": "single", "op": "is", "value": true, "reason": "Cal un únic model de projecte d'innovació." },
+            { "cond": "white", "op": "is", "value": true, "reason": "El model ha d'estar fet d'almenys dues peces LEGO blanques." },
+            { "cond": "studs", "op": "is", "value": true, "reason": "El model ha de mesurar almenys quatre espigues en alguna direcció." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M02",
+      "number": "02",
+      "kind": "mission",
+      "journey": "yellow",
+      "name": "Plataforma petroliera",
+      "officialName": "PLATAFORMA PETROLÍFERA",
+      "pages": [8, 30],
+      "position": { "x": 0.10, "y": 0.26 },
+      "story": "El petroli és una font d'energia no renovable que es pot fer servir com a combustible per als vehicles.",
+      "storyOfficial": "El petróleo es una fuente de energía no renovable que se puede utilizar para proporcionar combustible a los vehículos.",
+      "task": "Bombar el petroli perquè les unitats de combustible es carreguin al camió i després lliurar-lo a l'estació de servei.",
+      "taskOfficial": "Bombead el petróleo para que las unidades de combustible se carguen en el camión de combustible y luego lo entregue a la estación de servicio.",
+      "setup": "Aixequeu el tobogan, empenyeu el camió al seu lloc i baixeu el tobogan sobre el camió. Carregueu tres unitats de combustible a la tremuja.",
+      "setupPage": 26,
+      "conditions": [
+        {
+          "id": "fuelInTruck",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "derived",
+          "maxSource": "p. 23 i p. 26: només hi ha 3 unitats de combustible",
+          "label": "Unitats de combustible dins del camió de combustible",
+          "official": "Si hay una unidad de combustible en el camión de combustible: 5 C/U",
+          "page": 8
+        },
+        {
+          "id": "truckAtStation",
+          "type": "boolean",
+          "points": 10,
+          "bonus": true,
+          "label": "Bonificació: el camió (amb almenys 1 unitat de combustible) és almenys parcialment sobre l'àrea objectiu de l'estació de servei",
+          "official": "Bonificación: si al menos una unidad de combustible está en el camión de combustible y el camión de combustible está al menos parcialmente encima del área objetivo de la estación de servicio: 10 ADICIONALES",
+          "page": 8,
+          "requires": [
+            { "cond": "fuelInTruck", "op": "gte", "value": 1, "reason": "La bonificació requereix almenys una unitat de combustible dins del camió." }
+          ]
+        }
+      ],
+      "reviewFlags": ["m02-bonus-wording", "m02-fuel-max"]
+    },
+    {
+      "id": "M03",
+      "number": "03",
+      "kind": "mission",
+      "journey": "white",
+      "name": "Emmagatzematge d'energia",
+      "officialName": "ALMACENAMIENTO DE ENERGÍA",
+      "pages": [9, 30],
+      "position": { "x": 0.22, "y": 0.09 },
+      "story": "Les noves tecnologies ens ajuden a emmagatzemar energia. Hi ha roques volcàniques que es poden escalfar aïlladament per emmagatzemar energia fins que es necessiti.",
+      "storyOfficial": "Las nuevas tecnologías nos ayudan a almacenar energía. Hay rocas volcánicas que se pueden calentar aisladamente para almacenar energía hasta que se necesite.",
+      "task": "Carregar unitats d'energia al contenidor d'emmagatzematge i després alliberar la unitat d'energia de la safata de sota el model.",
+      "taskOfficial": "Cargad unidades de energía en el contenedor de almacenamiento y luego liberad la unidad de energía de la bandeja debajo del modelo.",
+      "setup": "Col·loqueu una unitat d'energia a la safata i empenyeu-la completament. Es pot fer servir la paret d'exhibició de l'equip.",
+      "setupPage": 26,
+      "conditions": [
+        {
+          "id": "noTouch",
+          "type": "check",
+          "default": true,
+          "label": "Les unitats del contenidor NO toquen l'equipament de l'equip al final (desmarqueu-ho si en toquen)",
+          "official": "Las unidades de energía almacenadas en el contenedor de almacenamiento de energía no pueden estar en contacto con el equipamiento del equipo al final de la partida.",
+          "page": 9
+        },
+        {
+          "id": "inContainer",
+          "type": "count",
+          "pointsEach": 10,
+          "max": 3,
+          "maxOrigin": "official",
+          "uses": { "energy": 1 },
+          "label": "Unitats d'energia completament dins del contenidor d'emmagatzematge (màx. 3)",
+          "official": "Si una unidad de energía está completamente en el contenedor de almacenamiento de energía (máx. 3): 10 C/U",
+          "page": 9,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "Les unitats del contenidor no poden tocar l'equipament de l'equip al final de la partida." }
+          ]
+        },
+        {
+          "id": "trayRemoved",
+          "type": "boolean",
+          "points": 5,
+          "label": "La unitat d'energia s'ha retirat completament de la safata d'emmagatzematge",
+          "official": "Si la unidad de energía se retira completamente de la bandeja de almacenamiento de energía: 5",
+          "page": 9
+        }
+      ]
+    },
+    {
+      "id": "M04",
+      "number": "04",
+      "kind": "mission",
+      "name": "Granja solar",
+      "officialName": "GRANJA SOLAR",
+      "pages": [9, 30],
+      "position": { "x": 0.35, "y": 0.09 },
+      "story": "L'energia solar es pot emmagatzemar amb noves tecnologies de concentració solar i després fer-la servir per generar electricitat.",
+      "storyOfficial": "La energía solar puede almacenarse utilizando nuevas tecnologías de concentración de energía solar y luego usarse para generar electricidad.",
+      "task": "Iniciar la distribució de les unitats d'energia movent-les de les seves posicions inicials al tapet.",
+      "taskOfficial": "Iniciad la distribución de las unidades de energía moviéndolas de sus posiciones iniciales en el tapete.",
+      "setup": "Col·loqueu tres unitats d'energia com es mostra.",
+      "setupPage": 26,
+      "conditions": [
+        {
+          "id": "removed",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "derived",
+          "maxSource": "p. 26: es col·loquen 3 unitats; la bonificació parla de «las 3 unidades»",
+          "label": "Unitats d'energia retirades completament del seu cercle inicial",
+          "official": "Si una unidad de energía ha sido retirada completamente de su círculo inicial: 5 C/U",
+          "page": 9
+        },
+        {
+          "id": "allThree",
+          "type": "auto",
+          "points": 5,
+          "bonus": true,
+          "label": "Bonificació: les 3 unitats d'energia s'han retirat completament dels cercles inicials (automàtic)",
+          "official": "Bonificación: si las 3 unidades de energía se han retirado completamente de sus círculos iniciales: 5 ADIC.",
+          "page": 9,
+          "requires": [
+            { "cond": "removed", "op": "gte", "value": 3, "reason": "Cal que les 3 unitats s'hagin retirat dels cercles inicials." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M05",
+      "number": "05",
+      "kind": "mission",
+      "journey": "orange",
+      "name": "Xarxa intel·ligent",
+      "officialName": "RED INTELIGENTE",
+      "pages": [10, 30],
+      "position": { "x": 0.48, "y": 0.09 },
+      "story": "Les xarxes intel·ligents fan servir l'electricitat generada per diferents fonts i la distribueixen de manera òptima al consumidor on i quan la necessita.",
+      "storyOfficial": "Las redes inteligentes utilizan la electricidad generada a partir de las diferentes fuentes de energía y la distribuyen de forma óptima al consumidor dónde y cuándo la necesita.",
+      "task": "Aixecar el connector taronja del terreny de joc per completar la connexió de xarxa intel·ligent amb el terreny de joc contrari.",
+      "taskOfficial": "Levantad el conector naranja del terreno de juego para completar la conexión de red inteligente con el terreno de juego opuesto.",
+      "setup": "Empenyeu l'activador vermell completament cap a dins.",
+      "setupPage": 26,
+      "conditions": [
+        {
+          "id": "noTouch",
+          "type": "check",
+          "default": true,
+          "label": "El model de xarxa intel·ligent NO toca l'equipament de l'equip al final (desmarqueu-ho si en toca)",
+          "official": "El modelo de red inteligente no puede estar tocando el equipamiento del equipo al final de la partida.",
+          "page": 10
+        },
+        {
+          "id": "raised",
+          "type": "boolean",
+          "points": 20,
+          "label": "El connector taronja del vostre terreny de joc està completament aixecat",
+          "official": "Si el conector naranja de vuestro terreno de juego está completamente levantado: 20",
+          "page": 10,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "El model de xarxa intel·ligent no pot tocar l'equipament de l'equip al final de la partida." }
+          ]
+        },
+        {
+          "id": "bothRaised",
+          "type": "boolean",
+          "points": 10,
+          "bonus": true,
+          "label": "Bonificació: el connector taronja de l'equip CONTRARI també està completament aixecat",
+          "official": "Bonificación: Si los conectores naranjas de ambos equipos están completamente levantados: 10 ADICIONALES",
+          "page": 10,
+          "requires": [
+            { "cond": "raised", "op": "is", "value": true, "reason": "La bonificació requereix que els connectors dels DOS equips estiguin aixecats; el vostre no ho està." },
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "El model de xarxa intel·ligent no pot tocar l'equipament de l'equip al final de la partida." }
+          ]
+        }
+      ],
+      "reviewFlags": ["m05-opponent"]
+    },
+    {
+      "id": "M06",
+      "number": "06",
+      "kind": "mission",
+      "journey": "yellow",
+      "name": "Automòbil híbrid",
+      "officialName": "AUTOMÓVIL HÍBRIDO",
+      "pages": [10, 30],
+      "position": { "x": 0.63, "y": 0.09 },
+      "story": "Els automòbils híbrids combinen fonts d'energia i es poden recarregar o reomplir a l'estació de servei.",
+      "storyOfficial": "Los automóviles híbridos utilizan una combinación de fuentes de energía y pueden recargarse o reabastecerse en la estación de servicio.",
+      "task": "Recarregar l'automòbil híbrid inserint-hi la unitat híbrida.",
+      "taskOfficial": "Recargad el automóvil híbrido insertando la unidad híbrida en el automóvil.",
+      "setup": "Col·loqueu la unitat híbrida i l'automòbil de manera que les rodes posteriors descansin just darrere de la rampa.",
+      "setupPage": 27,
+      "conditions": [
+        {
+          "id": "offRamp",
+          "type": "boolean",
+          "points": 10,
+          "label": "L'automòbil híbrid ja no toca la rampa",
+          "official": "Si el automóvil híbrido ya no toca la rampa: 10",
+          "page": 10
+        },
+        {
+          "id": "hybridInCar",
+          "type": "boolean",
+          "points": 10,
+          "label": "La unitat híbrida és dins de l'automòbil híbrid",
+          "official": "Si la unidad híbrida está en el automóvil híbrido: 10",
+          "page": 10
+        }
+      ]
+    },
+    {
+      "id": "M07",
+      "number": "07",
+      "kind": "mission",
+      "journey": "white",
+      "name": "Turbina eòlica",
+      "officialName": "TURBINA EÓLICA",
+      "pages": [11, 30],
+      "position": { "x": 0.85, "y": 0.09 },
+      "story": "L'energia renovable del vent fa girar les pales de la turbina i genera electricitat.",
+      "storyOfficial": "La energía renovable del viento se utiliza para hacer girar las aspas de la turbina y generar electricidad.",
+      "task": "Alliberar les unitats d'energia de la turbina eòlica.",
+      "taskOfficial": "Liberad las unidades de energía de la turbina eólica.",
+      "setup": "Estireu l'activador vermell fins al topall. Carregueu tres unitats d'energia a la tremuja lliscant.",
+      "setupPage": 27,
+      "conditions": [
+        {
+          "id": "released",
+          "type": "count",
+          "pointsEach": 10,
+          "max": 3,
+          "maxOrigin": "derived",
+          "maxSource": "p. 27: es carreguen 3 unitats d'energia a la tremuja",
+          "label": "Unitats d'energia que ja no estan en contacte amb la turbina eòlica",
+          "official": "Si una unidad de energía ya no está en contacto con la turbina eólica: 10 C/U",
+          "page": 11
+        }
+      ]
+    },
+    {
+      "id": "M08",
+      "number": "08",
+      "kind": "mission",
+      "journey": "white",
+      "name": "Televisió",
+      "officialName": "TELEVISIÓN",
+      "pages": [11, 30],
+      "position": { "x": 0.87, "y": 0.31 },
+      "story": "El consum d'energia a casa forma part de la vida quotidiana, per exemple quan mirem la televisió.",
+      "storyOfficial": "El consumo de energía en nuestros hogares es parte de la vida cotidiana, por ejemplo al ver televisión.",
+      "task": "Aixecar la pantalla del televisor i moure la unitat d'energia a la ranura del televisor.",
+      "taskOfficial": "Levantad la pantalla del televisor y moved la unidad de energía a la ranura del televisor.",
+      "setup": "Col·loqueu una unitat d'energia sota la televisió. Baixeu el televisor i traieu completament el sofà vermell.",
+      "setupPage": 27,
+      "conditions": [
+        {
+          "id": "noTouch",
+          "type": "check",
+          "default": true,
+          "label": "El model de televisió i la unitat de la ranura verda NO toquen l'equipament al final (desmarqueu-ho si en toquen)",
+          "official": "El modelo televisión y la unidad de energía en la ranura verde de televisión no pueden tocar el equipamiento del equipo al final de la partida.",
+          "page": 11
+        },
+        {
+          "id": "tvRaised",
+          "type": "boolean",
+          "points": 10,
+          "label": "La televisió està completament aixecada",
+          "official": "Si la televisión está completamente levantada: 10",
+          "page": 11,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "El model de televisió no pot tocar l'equipament de l'equip al final de la partida." }
+          ]
+        },
+        {
+          "id": "unitInSlot",
+          "type": "boolean",
+          "points": 10,
+          "uses": { "energy": 1 },
+          "label": "Hi ha una unitat d'energia completament dins de la ranura verda de la televisió",
+          "official": "Si una unidad de energía está completamente en la ranura verde de la televisión: 10",
+          "page": 11,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "La unitat d'energia de la ranura verda no pot tocar l'equipament de l'equip al final de la partida." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M09",
+      "number": "09",
+      "kind": "mission",
+      "journey": "orange",
+      "name": "Dinosaure de joguina",
+      "officialName": "DINOSAURIO DE JUGUETE",
+      "pages": [12, 31],
+      "position": { "x": 0.93, "y": 0.48 },
+      "story": "Els dispositius electrònics com les joguines necessiten energia. Les bateries recarregables són una opció més sostenible que les d'un sol ús.",
+      "storyOfficial": "Dispositivos electrónicos como los juguetes requieren energía para funcionar. Las baterías recargables son una opción más sostenible que las desechables.",
+      "task": "Inserir una unitat d'energia o una bateria recarregable al dinosaure de joguina perquè funcioni.",
+      "taskOfficial": "Insertad una unidad de energía o una batería recargable en el dinosaurio de juguete para que funcione.",
+      "setup": "Col·loqueu el dinosaure de joguina a l'àrea de casa DRETA.",
+      "setupPage": 26,
+      "conditions": [
+        {
+          "id": "inLeftHome",
+          "type": "boolean",
+          "points": 10,
+          "label": "El dinosaure de joguina és completament a l'àrea de casa ESQUERRA",
+          "official": "Si el dinosaurio de juguete está completamente en el área de casa izquierda: 10",
+          "page": 12
+        },
+        {
+          "id": "lidClosed",
+          "type": "check",
+          "default": false,
+          "label": "La tapa del dinosaure de joguina està completament tancada",
+          "official": "Si la tapa del dinosaurio de juguete está completamente cerrada:",
+          "page": 12
+        },
+        {
+          "id": "contents",
+          "type": "select",
+          "default": "none",
+          "label": "Què hi ha dins del dinosaure (amb la tapa completament tancada)?",
+          "official": "• y dentro hay una unidad de energía: 10 • o hay una batería recargable en el interior: 20",
+          "page": 12,
+          "options": [
+            { "value": "none", "label": "Res (buit)", "points": 0 },
+            { "value": "energy", "label": "Una unitat d'energia", "points": 10, "uses": { "energy": 1 } },
+            { "value": "battery", "label": "La bateria recarregable", "points": 20 }
+          ],
+          "requires": [
+            { "cond": "lidClosed", "op": "is", "value": true, "reason": "El contingut només puntua si la tapa del dinosaure està completament tancada." }
+          ]
+        }
+      ],
+      "reviewFlags": ["m09-exclusive"]
+    },
+    {
+      "id": "M10",
+      "number": "10",
+      "kind": "mission",
+      "journey": "orange",
+      "name": "Planta d'energia",
+      "officialName": "PLANTA DE ENERGÍA",
+      "pages": [12, 31],
+      "position": { "x": 0.48, "y": 0.81 },
+      "story": "La demanda d'energia és molt alta i es poden fer servir moltes fonts diferents per satisfer-la.",
+      "storyOfficial": "La demanda de energía es muy alta y se pueden utilizar muchas fuentes de energía diferentes para satisfacerla.",
+      "task": "Alliberar les tres unitats d'energia de la planta d'energia.",
+      "taskOfficial": "Liberad las tres unidades de energía de la planta de energía.",
+      "setup": "Carregueu tres unitats d'energia i baixeu la barra vermella.",
+      "setupPage": 27,
+      "conditions": [
+        {
+          "id": "released",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "derived",
+          "maxSource": "p. 12 («las tres unidades de energía») i p. 27",
+          "label": "Unitats d'energia que ja no estan en contacte amb la planta d'energia",
+          "official": "Si una unidad de energía ya no está en contacto con la planta de energía: 5 C/U",
+          "page": 12
+        },
+        {
+          "id": "allThree",
+          "type": "auto",
+          "points": 10,
+          "bonus": true,
+          "label": "Bonificació: les tres unitats ja no estan en contacte amb la planta d'energia (automàtic)",
+          "official": "Bonificación: si las tres unidades de energía ya no están en contacto con la planta de energía: 10 ADICIONAL",
+          "page": 12,
+          "requires": [
+            { "cond": "released", "op": "gte", "value": 3, "reason": "Cal que les tres unitats estiguin alliberades." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M11",
+      "number": "11",
+      "kind": "mission",
+      "journey": "blue",
+      "name": "Central hidroelèctrica",
+      "officialName": "CENTRAL HIDROELÉCTRICA",
+      "pages": [13, 31],
+      "position": { "x": 0.30, "y": 0.49 },
+      "story": "L'aigua alliberada del dipòsit fa girar la roda de la turbina per generar electricitat.",
+      "storyOfficial": "El agua liberada del depósito hace girar la rueda de la turbina para generar electricidad.",
+      "task": "Enviar la unitat d'aigua des de la part superior de la presa fins a la roda de la turbina per alliberar la unitat d'energia.",
+      "taskOfficial": "Enviad la unidad de agua desde la parte superior de la presa hidroeléctrica a la rueda de la turbina para liberar la unidad de energía.",
+      "setup": "Col·loqueu una unitat d'energia davant del braç negre més gran de la roda de la turbina. Carregueu una unitat d'aigua a la tremuja.",
+      "setupPage": 28,
+      "conditions": [
+        {
+          "id": "released",
+          "type": "boolean",
+          "points": 20,
+          "label": "La unitat d'energia ja no està en contacte amb la presa hidroelèctrica",
+          "official": "Si la unidad de energía ya no está en contacto con la presa hidroeléctrica: 20",
+          "page": 13
+        }
+      ]
+    },
+    {
+      "id": "M12",
+      "number": "12",
+      "kind": "mission",
+      "journey": "blue",
+      "name": "Embassament d'aigua",
+      "officialName": "EMBALSE DE AGUA",
+      "pages": [13, 31],
+      "position": { "x": 0.35, "y": 0.42 },
+      "story": "L'aigua del riu retinguda per la presa s'emmagatzema a l'embassament. També es pot bombar aigua de la part baixa del riu quan hi ha excés d'electricitat.",
+      "storyOfficial": "El agua del río retenida por la presa se almacena en en embalse. El agua de la parte inferior del río también puede ser bombeada para llenar el embalse en los momentos en que hay un exceso de electricidad para usar.",
+      "task": "Col·locar les unitats d'aigua amb llaç del riu (per sobre i per sota de la presa) a l'embassament o als ganxos vermells.",
+      "taskOfficial": "Colocad las unidades de agua con lazo del río por encima y por debajo de la presa en el embalse de agua o en los ganchos rojos.",
+      "setup": "Col·loqueu el marc de l'embassament i les tres unitats d'aigua amb llaç com es mostra (els llaços alineats amb les línies del tapet). Hi ha 2 ganxos vermells.",
+      "setupPage": 28,
+      "conditions": [
+        {
+          "id": "noTouch",
+          "type": "check",
+          "default": true,
+          "label": "Les unitats d'aigua a l'embassament o als ganxos NO toquen l'equipament al final (desmarqueu-ho si en toquen)",
+          "official": "Las unidades de agua con lazo en el embalse de agua o en los ganchos rojos no pueden tocar equipamiento del equipo al final de la partida.",
+          "page": 13
+        },
+        {
+          "id": "inReservoir",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "derived",
+          "maxSource": "p. 25 i p. 28: hi ha 3 unitats d'aigua amb llaç",
+          "label": "Unitats d'aigua amb llaç completament dins de l'embassament, tocant el tapet (el llaç pot sobresortir)",
+          "official": "Si una unidad de agua con lazo está completamente en el embalse de agua, tocando el tapete: 5 C/U. El lazo de la unidad de agua puede extenderse fuera del embalse de agua.",
+          "page": 13,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "Les unitats d'aigua de l'embassament no poden tocar l'equipament de l'equip al final de la partida." }
+          ]
+        },
+        {
+          "id": "hooks",
+          "type": "count",
+          "pointsEach": 10,
+          "max": 2,
+          "maxOrigin": "derived",
+          "maxSource": "p. 28: el model té 2 ganxos vermells",
+          "label": "Ganxos vermells amb una unitat d'aigua amb llaç col·locada en un sol ganxo (10 per ganxo)",
+          "official": "Si una unidad de agua con lazo se coloca en un solo gancho rojo: 10 CADA GANCHO",
+          "page": 13,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "Les unitats d'aigua dels ganxos no poden tocar l'equipament de l'equip al final de la partida." }
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "type": "sumMax",
+          "conds": ["inReservoir", "hooks"],
+          "max": 3,
+          "origin": "derived",
+          "reason": "Només hi ha 3 unitats d'aigua amb llaç: la suma d'unitats a l'embassament i als ganxos no pot superar 3."
+        }
+      ],
+      "reviewFlags": ["m12-hooks"]
+    },
+    {
+      "id": "M13",
+      "number": "13",
+      "kind": "mission",
+      "name": "Power-to-X",
+      "officialName": "POWER-TO-X",
+      "pages": [14, 31],
+      "position": { "x": 0.44, "y": 0.40 },
+      "story": "L'excedent d'energia renovable es pot fer servir per convertir l'aigua en hidrogen, que es pot emmagatzemar en tancs fins que es necessiti.",
+      "storyOfficial": "El excedente de energía renovable se puede utilizar para convertir el agua en gas hidrógeno que se puede almacenar en tanques hasta que se necesite.",
+      "task": "Transportar unitats d'energia a l'àrea objectiu de la planta d'hidrogen.",
+      "taskOfficial": "Transportad unidades de energía al área objetivo de la planta de hidrógeno.",
+      "setup": "No requereix model específic: és una àrea objectiu del tapet.",
+      "setupPage": 5,
+      "conditions": [
+        {
+          "id": "inArea",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "official",
+          "uses": { "energy": 1 },
+          "label": "Unitats d'energia completament dins de l'àrea objectiu de la planta d'hidrogen (màx. 3)",
+          "official": "Si una unidad de energía está completamente en el área objetivo de la planta de hidrógeno (max. 3): 5 C/U",
+          "page": 14
+        }
+      ]
+    },
+    {
+      "id": "M14",
+      "number": "14",
+      "kind": "mission",
+      "journey": "yellow",
+      "name": "Fàbrica de joguines",
+      "officialName": "FÁBRICA DE JUGUETES",
+      "pages": [14, 31],
+      "position": { "x": 0.62, "y": 0.45 },
+      "story": "Les fàbriques fan servir grans quantitats d'energia per fabricar els productes que fem servir, com les joguines.",
+      "storyOfficial": "Las fábricas utilizan grandes cantidades de energía para fabricar los productos que utilizamos como juguetes.",
+      "task": "Lliurar unitats d'energia al contenidor de la fàbrica de joguines i alliberar el minidinosaure de joguina.",
+      "taskOfficial": "Entregad unidades de energía al contenedor de la fábrica de juguetes y liberad el minidinosaurio de juguete.",
+      "setup": "Aixequeu la palanca negra i empenyeu el minidinosaure perquè quedi darrere de la palanca.",
+      "setupPage": 28,
+      "conditions": [
+        {
+          "id": "noTouch",
+          "type": "check",
+          "default": true,
+          "label": "Les unitats d'energia de la fàbrica NO toquen l'equipament al final (desmarqueu-ho si en toquen)",
+          "official": "Las unidades de energía almacenadas en la fábrica de juguetes no pueden tocar equipamiento del equipo al final de la partida.",
+          "page": 14
+        },
+        {
+          "id": "inFactory",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "official",
+          "uses": { "energy": 1 },
+          "label": "Unitats d'energia almenys parcialment a l'espai posterior de la fàbrica (o a la tremuja vermella) (màx. 3)",
+          "official": "Si una unidad de energía está al menos parcialmente en el espacio en la parte posterior de la fábrica de juguetes (o en la tolva roja) (máximo de tres): 5 C/U",
+          "page": 14,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "Les unitats d'energia de la fàbrica no poden tocar l'equipament de l'equip al final de la partida." }
+          ]
+        },
+        {
+          "id": "miniDino",
+          "type": "boolean",
+          "points": 10,
+          "label": "S'ha alliberat el minidinosaure de joguina",
+          "official": "Si se ha liberado el minidinosaurio de juguete: 10",
+          "page": 14
+        }
+      ]
+    },
+    {
+      "id": "M15",
+      "number": "15",
+      "kind": "mission",
+      "name": "Bateria recarregable",
+      "officialName": "BATERÍA RECARGABLE",
+      "pages": [15, 31],
+      "position": { "x": 0.69, "y": 0.35 },
+      "story": "L'energia es pot emmagatzemar en bateries, però també cal molta energia per produir-les.",
+      "storyOfficial": "La energía se puede almacenar en baterías, pero también se necesita mucha energía para producirlas.",
+      "task": "Lliurar unitats d'energia a l'àrea objectiu de la missió bateria recarregable.",
+      "taskOfficial": "Entregad unidades de energía al área objetivo de la misión batería recargable.",
+      "setup": "Col·loqueu la bateria recarregable com es mostra.",
+      "setupPage": 28,
+      "conditions": [
+        {
+          "id": "noTouch",
+          "type": "check",
+          "default": true,
+          "label": "Les unitats d'energia de l'àrea NO toquen l'equipament al final (desmarqueu-ho si en toquen)",
+          "official": "Las unidades de energía almacenadas en el área objetivo de la misión batería recargable no pueden tocar equipamiento del equipo al final de la partida.",
+          "page": 15
+        },
+        {
+          "id": "inArea",
+          "type": "count",
+          "pointsEach": 5,
+          "max": 3,
+          "maxOrigin": "official",
+          "uses": { "energy": 1 },
+          "label": "Unitats d'energia completament dins de l'àrea objectiu de la bateria recarregable (màx. 3) — la bateria NO compta com a unitat d'energia",
+          "official": "Si una unidad de energía está completamente en el área objetivo de la misión batería recargable (máx. 3): 5 C/U. La batería recargable no es una unidad de energía.",
+          "page": 15,
+          "requires": [
+            { "cond": "noTouch", "op": "is", "value": true, "reason": "Les unitats d'energia de l'àrea no poden tocar l'equipament de l'equip al final de la partida." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PT",
+      "number": "FP",
+      "kind": "general",
+      "name": "Fitxes de precisió",
+      "officialName": "FICHAS DE PRECISIÓN",
+      "pages": [15, 20, 31],
+      "story": "Comenceu la partida amb sis fitxes de precisió (valor 50 punts). Les sosté l'àrbitre.",
+      "storyOfficial": "Comenzaréis la partida con seis fichas de precisión con un valor de 50 puntos. El/la árbitro es quién las sujeta.",
+      "task": "Evitar interrompre el robot fora de casa: cada interrupció fora de casa (o equipament retirat a mà parcialment a casa) fa perdre una fitxa.",
+      "taskOfficial": "Si interrumpís el robot fuera de casa, el árbitro quita una ficha. Mantendréis los puntos por el número de fichas restantes al final de la partida. (Ver Reglas, Fuera de casa 1 y 2)",
+      "setup": "Doneu les fitxes a l'àrbitre perquè les sostingui durant la partida.",
+      "setupPage": 28,
+      "conditions": [
+        {
+          "id": "tokens",
+          "type": "select",
+          "default": "6",
+          "label": "Fitxes de precisió que queden al final de la partida",
+          "official": "Si el número de fichas restantes es: 1: 10, 2: 15, 3: 25, 4: 35, 5: 50, 6: 50",
+          "page": 15,
+          "options": [
+            { "value": "6", "label": "6 fitxes", "points": 50 },
+            { "value": "5", "label": "5 fitxes", "points": 50 },
+            { "value": "4", "label": "4 fitxes", "points": 35 },
+            { "value": "3", "label": "3 fitxes", "points": 25 },
+            { "value": "2", "label": "2 fitxes", "points": 15 },
+            { "value": "1", "label": "1 fitxa", "points": 10 },
+            { "value": "0", "label": "0 fitxes (no indicat al PDF → 0 punts)", "points": 0, "origin": "derived" }
+          ]
+        }
+      ],
+      "reviewFlags": ["pt-zero"]
+    }
+  ],
+  "graciousProfessionalism": {
+    "name": "Gracious Professionalism® (Professionalitat cordial)",
+    "pages": [6, 31],
+    "countsTowardRobotScore": false,
+    "official": "La puntación de Profesionalismo cordial se agregará a los puntos obtenidos en la rúbrica de Core Values durante la sesión de evaluación (entrevista) y constituirán una parte de la puntuación total de los Core Values. Se supondrá que cada equipo comenzará con Profesionalismo cordial como CUMPLIDO (3 puntos).",
+    "note": "No suma a la puntuació del joc del robot: forma part de Core Values. L'aplicació la registra a part.",
+    "default": 3,
+    "options": [
+      { "value": 2, "label": "En desenvolupament", "official": "EN DESARROLLO" },
+      { "value": 3, "label": "Assolit", "official": "CUMPLIDO" },
+      { "value": 4, "label": "Superat", "official": "SUPERADO" }
+    ]
+  },
+  "journeys": {
+    "white": { "label": "Viatge de l'energia blanca", "session": 1, "color": "#f4f4f4" },
+    "blue": { "label": "Viatge de l'energia blava", "session": 2, "color": "#006cb7" },
+    "yellow": { "label": "Viatge de l'energia groga", "session": 3, "color": "#ffd500" },
+    "orange": { "label": "Viatge de l'energia taronja", "session": 4, "color": "#f57d20" }
+  },
+  "officialRules": [
+    { "title": "Durada", "text": "Cada partida dura 2 minuts i 30 segons.", "page": 6 },
+    { "title": "Millor partida", "text": "L'equip té tres partides, però només compta la puntuació més alta.", "page": 6 },
+    { "title": "Desempat oficial", "text": "Els empats es trenquen amb la segona i la tercera millor puntuació.", "page": 21 },
+    { "title": "Visibilitat", "text": "Els requisits de la missió han de ser visibles al final de la partida per puntuar, llevat que la missió indiqui el contrari.", "page": 21 },
+    { "title": "«Completament dins»", "text": "Quan es requereix que alguna cosa sigui «completament dins» d'una àrea, les línies i l'espai aeri sobre l'àrea compten com a «dins», llevat que s'indiqui una altra cosa.", "page": 21 },
+    { "title": "Benefici del dubte", "text": "Si una situació fa que la decisió de l'àrbitre sigui poc clara, l'equip obté el benefici del dubte. El text té autoritat sobre les imatges.", "page": 16 },
+    { "title": "Interrupcions", "text": "Si s'interromp el robot fora de casa (encara que sigui parcialment), es perd una fitxa de precisió.", "page": 20 },
+    { "title": "Punts no vàlids", "text": "No es pot separar el Dual Lock, desmuntar o trencar els models de missió, ni interrompre el robot per obtenir punts amb aquesta acció. Aquests punts no compten.", "page": 20 },
+    { "title": "Interferència", "text": "Els punts fallats o perduts per una interferència al terreny contrari s'atorguen automàticament a l'altre equip.", "page": 20 },
+    { "title": "Equipament", "text": "Màxim d'una controladora i quatre motors per partida; només sensors de contacte/força, color, distància/ultrasònic i giroscopi.", "page": 17 }
+  ],
+  "reviewFlags": [
+    { "id": "m02-bonus-wording", "mission": "M02", "text": "La fitxa de la missió (p. 8) diu «al menos una unidad de combustible» per a la bonificació, però la full de puntuació (p. 30) diu «al menos una unidad de energía». L'aplicació segueix la p. 8 (unitat de combustible)." },
+    { "id": "m02-fuel-max", "mission": "M02", "text": "El PDF no indica un màxim explícit d'unitats de combustible al camió; l'aplicació fa servir 3 perquè només n'hi ha 3 al set (p. 23, p. 26)." },
+    { "id": "m05-opponent", "mission": "M05", "text": "La bonificació depèn de l'equip de la taula contrària. En pràctiques amb una sola taula, l'organitzador ha de decidir si marca aquesta casella (decisió d'organització, no regla oficial)." },
+    { "id": "m09-exclusive", "mission": "M09", "text": "El text diu «y dentro hay una unidad de energía: 10 • o hay una batería recargable: 20». L'aplicació ho tracta com a opcions excloents (màx. 20 per al contingut)." },
+    { "id": "m12-hooks", "mission": "M12", "text": "El nombre de ganxos (2) i d'unitats d'aigua amb llaç (3) s'han extret de la configuració (p. 28, p. 25). L'aplicació suposa que una mateixa unitat no pot puntuar alhora a l'embassament i en un ganxo." },
+    { "id": "pt-zero", "mission": "PT", "text": "La taula de fitxes de precisió només indica valors per a 1–6 fitxes. Amb 0 fitxes l'aplicació assigna 0 punts (no indicat explícitament)." },
+    { "id": "energy-cap", "mission": null, "text": "El límit global de 12 unitats d'energia col·locades en destinacions és una deducció de l'inventari del set (p. 23, p. 25), no una regla escrita. El màxim teòric calculat de l'aplicació en depèn." },
+    { "id": "journeys", "mission": null, "text": "L'assignació de missions als «viatges de l'energia» (p. 7, p. 23) s'ha deduït de la taula de bosses de models, que és ambigua en el text extret. És només informativa i no afecta la puntuació." },
+    { "id": "positions", "mission": null, "text": "Les posicions del mapa del terreny són aproximades (coordenades dels números de missió del diagrama de la p. 5). El diagrama de l'aplicació és esquemàtic, no oficial." },
+    { "id": "gp", "mission": null, "text": "Gracious Professionalism® (2/3/4) no suma a la puntuació del joc del robot: forma part de Core Values (p. 6). L'aplicació el registra a part." },
+    { "id": "updates", "mission": null, "text": "Les actualitzacions oficials del desafiament (Challenge Updates) poden modificar regles durant la temporada (p. 16). Reviseu-les i, si cal, actualitzeu src/data/superpowered.json." },
+    { "id": "m11-name", "mission": "M11", "text": "La missió 11 es diu «Central hidroeléctrica» a la p. 13 i «Presa hidroeléctrica» a la full de puntuació (p. 31). Mateixa missió." }
+  ]
+}

@@ -1,0 +1,7 @@
+node_modules
+dist
+*.log
+tsconfig.tsbuildinfo
+# Còpies de seguretat locals i PDF de regles (no es publiquen)
+/[0-9]*.json
+*.pdf

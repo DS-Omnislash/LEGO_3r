@@ -1,0 +1,276 @@
+{
+  "app": "fll-superpowered-tracker",
+  "version": 1,
+  "exportedAt": "2026-10-22T12:04:13.026Z",
+  "rulesVersion": "superpowered-es-v1",
+  "data": {
+    "teams": [
+      {
+        "id": "03a6fed0-a249-4da6-be5b-a76b9171b003",
+        "name": "SÍ",
+        "number": "1",
+        "members": [
+          "Marwa",
+          "Ainoa",
+          "Sofia",
+          "Maryam"
+        ],
+        "notes": "",
+        "color": "#e95da2",
+        "emoji": "🌞",
+        "archived": false,
+        "createdAt": "2026-10-22T11:15:21.400Z",
+        "updatedAt": "2026-10-22T11:15:27.981Z"
+      },
+      {
+        "id": "5d04eee0-4b87-446a-a767-7e6bae173892",
+        "name": "67PAPOI",
+        "number": "2",
+        "members": [
+          "Irene",
+          "Dinian",
+          "David C",
+          "Kaleb"
+        ],
+        "notes": "",
+        "color": "#ffd500",
+        "emoji": "⚡",
+        "archived": false,
+        "createdAt": "2026-10-22T11:16:25.873Z",
+        "updatedAt": "2026-10-22T11:16:25.873Z"
+      },
+      {
+        "id": "62876b79-e2cf-47c5-9f9e-4852011b7b39",
+        "name": "Els Pollastres amb verdures",
+        "number": "4",
+        "members": [
+          "Weverton",
+          "David",
+          "Andrés"
+        ],
+        "notes": "",
+        "color": "#006cb7",
+        "emoji": "🦖",
+        "archived": false,
+        "createdAt": "2026-10-22T11:18:02.117Z",
+        "updatedAt": "2026-10-22T11:18:02.117Z"
+      },
+      {
+        "id": "9bddd940-bc5e-4f10-b921-7b9c61f1acdc",
+        "name": "Nonchalant",
+        "number": "3",
+        "members": [
+          "Sully",
+          "Noran",
+          "Fadwa",
+          "José Luis"
+        ],
+        "notes": "",
+        "color": "#00af4d",
+        "emoji": "🦾",
+        "archived": false,
+        "createdAt": "2026-10-22T11:17:16.703Z",
+        "updatedAt": "2026-10-22T11:17:16.703Z"
+      },
+      {
+        "id": "c54673e1-e5ea-4206-b7c1-06b41d12fb7c",
+        "name": "papoisitos remix",
+        "number": "5",
+        "members": [
+          "Marta",
+          "Aura",
+          "Jan"
+        ],
+        "notes": "",
+        "color": "#00897b",
+        "emoji": "🤖",
+        "archived": false,
+        "createdAt": "2026-10-22T11:18:59.164Z",
+        "updatedAt": "2026-10-22T11:18:59.164Z"
+      }
+    ],
+    "sessions": [
+      {
+        "date": "2026-10-22",
+        "title": "Setmana 1 - Missió 1",
+        "notes": "",
+        "type": "practice",
+        "missionIds": [
+          "M01"
+        ],
+        "teamIds": [
+          "03a6fed0-a249-4da6-be5b-a76b9171b003",
+          "5d04eee0-4b87-446a-a767-7e6bae173892",
+          "9bddd940-bc5e-4f10-b921-7b9c61f1acdc",
+          "62876b79-e2cf-47c5-9f9e-4852011b7b39",
+          "c54673e1-e5ea-4206-b7c1-06b41d12fb7c"
+        ],
+        "id": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "status": "completed",
+        "createdAt": "2026-10-22T11:19:43.234Z",
+        "updatedAt": "2026-10-22T12:02:50.260Z",
+        "log": [
+          {
+            "at": "2026-10-22T11:19:43.234Z",
+            "action": "created"
+          },
+          {
+            "at": "2026-10-22T12:02:50.260Z",
+            "action": "completed"
+          }
+        ],
+        "completedAt": "2026-10-22T12:02:50.260Z"
+      }
+    ],
+    "attempts": [
+      {
+        "id": "07f02c3e-0ab2-4e00-b3ef-26b02a54a64b",
+        "sessionId": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "teamId": "9bddd940-bc5e-4f10-b921-7b9c61f1acdc",
+        "number": 1,
+        "inputs": {
+          "M01": {
+            "single": true,
+            "white": true,
+            "studs": true,
+            "inArea": true
+          }
+        },
+        "adjustments": [],
+        "gp": 3,
+        "notes": "Falta millorar codi",
+        "createdAt": "2026-10-22T12:01:56.396Z",
+        "updatedAt": "2026-10-22T12:02:16.926Z",
+        "revisions": []
+      },
+      {
+        "id": "24130205-a9e1-40b6-a85b-a8765ccb58c4",
+        "sessionId": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "teamId": "5d04eee0-4b87-446a-a767-7e6bae173892",
+        "number": 1,
+        "inputs": {
+          "M01": {
+            "single": true,
+            "white": true,
+            "studs": true,
+            "inArea": true
+          }
+        },
+        "adjustments": [],
+        "gp": 3,
+        "notes": "Disseny original",
+        "createdAt": "2026-10-22T11:59:00.286Z",
+        "updatedAt": "2026-10-22T11:59:21.806Z",
+        "revisions": []
+      },
+      {
+        "id": "27781eb3-5ed5-404c-827f-87dc2adf24c3",
+        "sessionId": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "teamId": "c54673e1-e5ea-4206-b7c1-06b41d12fb7c",
+        "number": 1,
+        "inputs": {
+          "M01": {
+            "single": true,
+            "white": true,
+            "studs": true,
+            "inArea": true
+          }
+        },
+        "adjustments": [
+          {
+            "id": "6e7cbc91-3e4a-4376-b87d-73c8132166df",
+            "points": 5,
+            "reason": "Anada i tornada, perfecte",
+            "at": "2026-10-22T11:51:08.514Z"
+          }
+        ],
+        "gp": 3,
+        "notes": "",
+        "createdAt": "2026-10-22T11:50:42.893Z",
+        "updatedAt": "2026-10-22T11:51:08.514Z",
+        "revisions": []
+      },
+      {
+        "id": "61f2ccf5-d642-4dc7-9d6e-0c9c46349c2b",
+        "sessionId": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "teamId": "62876b79-e2cf-47c5-9f9e-4852011b7b39",
+        "number": 1,
+        "inputs": {
+          "M01": {
+            "single": true,
+            "white": true,
+            "studs": true
+          }
+        },
+        "adjustments": [
+          {
+            "id": "de2ad566-109e-473f-898a-7c4209333baa",
+            "points": 5,
+            "reason": "Falta de temps",
+            "at": "2026-10-22T12:02:46.065Z"
+          }
+        ],
+        "gp": 3,
+        "notes": "",
+        "createdAt": "2026-10-22T12:02:18.713Z",
+        "updatedAt": "2026-10-22T12:02:46.065Z",
+        "revisions": []
+      },
+      {
+        "id": "fa2e87f3-26eb-468b-a264-f31e1fddec20",
+        "sessionId": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "teamId": "03a6fed0-a249-4da6-be5b-a76b9171b003",
+        "number": 1,
+        "inputs": {
+          "M01": {
+            "single": true,
+            "white": true,
+            "studs": true,
+            "inArea": true
+          }
+        },
+        "adjustments": [
+          {
+            "id": "b2ba15ff-73ca-4493-bbfe-147df768a480",
+            "points": -2,
+            "reason": "Repetició de prova",
+            "at": "2026-10-22T11:42:38.434Z"
+          }
+        ],
+        "gp": 3,
+        "notes": "Deixada parcial, segon intent fallit",
+        "createdAt": "2026-10-22T11:41:53.419Z",
+        "updatedAt": "2026-10-22T11:52:00.620Z",
+        "revisions": []
+      },
+      {
+        "id": "ff6cf79f-c7b3-4868-b292-027f6cb232a5",
+        "sessionId": "4b69cb9f-66be-46f1-85ea-a8e122234355",
+        "teamId": "03a6fed0-a249-4da6-be5b-a76b9171b003",
+        "number": 2,
+        "inputs": {},
+        "adjustments": [],
+        "gp": 3,
+        "notes": "",
+        "createdAt": "2026-10-22T11:43:27.340Z",
+        "updatedAt": "2026-10-22T11:43:27.340Z",
+        "revisions": []
+      }
+    ],
+    "settings": [
+      {
+        "id": "app",
+        "competitionName": "COMPETICIÓ LEGO 3r ESO",
+        "rankingMethod": "cumulative",
+        "sessionAggregation": "best",
+        "tieBreak": "none",
+        "scope": "practice",
+        "includeAdjustments": true,
+        "showOfficialText": false,
+        "defaultMissionIds": [
+          "PT"
+        ]
+      }
+    ]
+  }
+}

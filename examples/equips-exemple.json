@@ -1,0 +1,8 @@
+{
+  "teams": [
+    { "number": "101", "name": "Els Energètics", "members": ["Anna", "Pau", "Martina", "Jan"], "notes": "Grup de 3r A", "color": "#e3000b" },
+    { "number": "102", "name": "Robo-Volts", "members": ["Laia", "Marc", "Noa"], "notes": "", "color": "#006cb7" },
+    { "number": "103", "name": "Super Bricks", "members": ["Biel", "Júlia", "Ona", "Arnau"], "notes": "Necessita portàtil propi", "color": "#00af4d" },
+    { "number": "104", "name": "Turbines Turbo", "members": ["Pol", "Clara", "Hugo"], "notes": "", "color": "#f57d20" }
+  ]
+}
